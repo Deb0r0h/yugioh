@@ -5,5 +5,5 @@ faiss-cpu
 transformers
 bitsandbytes
 torch
-accelerate
+accelerate==0.21.0
 huggingface-hub
