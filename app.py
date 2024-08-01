@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
-from langchain.document_loaders import DataFrameLoader
+#from langchain.document_loaders import DataFrameLoader
+from langchain.document_loaders import PandasDataFrameLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.embeddings import CacheBackedEmbeddings, HuggingFaceEmbeddings
 from langchain.vectorstores import FAISS
@@ -26,7 +27,7 @@ final_dataset = load_data()
 
 @st.cache_resource
 def prepare_documents():
-    loader = DataFrameLoader(final_dataset, page_content_column='combined_content')
+    loader = PandasDataFrameLoader(final_dataset, page_content_column='combined_content')
     card_info = loader.load()
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50, length_function=len)
     return text_splitter.transform_documents(card_info)
