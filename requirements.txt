@@ -7,3 +7,4 @@ bitsandbytes
 torch
 accelerate==0.21.0
 huggingface-hub
+pandas
